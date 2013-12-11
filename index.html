@@ -1,0 +1,222 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google IO 2012</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/app.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<!-- <slide class="logoslide nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo.png"></span>
+  </article>
+</slide>
+ -->
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <hgroup class="auto-fadein">
+    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+    <p data-config-presenter><!-- populated from slide_config.json --></p>
+  </hgroup>
+</slide>
+
+
+<slide class="segue dark nobackground" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Phần I</h2>
+      <h3>Giải thuật</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>I.Giải thuật</h2>
+      <h3>1.Định nghĩa cặp nghịch thế</h3>
+    </hgroup>
+    <article ><p>Cho dãy số gồm N phần tử A[1], A[2], A[3],......A[N].<br>Cặp số thỏa điều kiện A &gt; A[j] và j &gt; i thì cặp số đó gọi là cặp nghịch thế.</p></article>
+ 
+</slide>
+
+<slide class="big" >
+  
+    <hgroup>
+      <h2>I.Giải thuật</h2>
+      <h3>2.Giải thuật bài toán</h3>
+    </hgroup>
+    <article ><ul class="build">
+<li>Thực hiện xét các cặp nghịch thế trong dãy số rồi triệt tiêu dần chúng đi bằng cách đổi chỗ 2 phần tử tương ứng trong cặp nghịch thế đó.</li>
+<li>Lặp lại cách xử lí trên cho đến khi hết các cặp nghịch thế trong dãy.</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="big" >
+  
+    <hgroup>
+      <h2>I.Giải thuật</h2>
+      <h3>3.Các bước tiến hành</h3>
+    </hgroup>
+    <article ><ul class="build">
+<li>Bước 1: i = 1; //bắt đầu từ đầu dãy</li>
+<li>Bước 2: j = i + 1//tìm các phần tử a[j] &lt; a[i], j &gt; i</li>
+<li>Bước 3: <br>Trong khi j &lt; N thực hiện.<br>
+Nếu a[j] &lt; a[i] thì hoán vị a[j], a[i];<br> Nếu i &lt; n: Lặp lại Bước 2<br> Ngược lại: Dừng<br>
+j = j + 1;</li>
+<li>Bước 4: i = i + 1 ;</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Phần II</h2>
+      <h3>Cài đặt thuật toán</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>II.Cài đặt thuật toán</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="c">
+void InterchangeSort(int[] a, int N){
+    int i, j;
+    for(int i=0; i&lt;= N-1; i++)
+        for(int j=i+1; j&lt; N; j++)
+            if(a[j]&lt;a[i])
+                Swap(a[j],a[i]);
+}
+</pre></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Phần III</h2>
+      <h3>Demo</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><iframe src="/demo/ComparisonSort.html"></iframe></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Phần IV</h2>
+      <h3>Đánh giá thuật toán</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>IV.Đánh giá thuật toán</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Thấy ngay số phép so sánh là luôn không đổi, tức không phụ thuộc vào tình trạng ban đầu của dãy.<br> Ta có thể ước lượng số phép so sánh bằng
+(n-1) + (n-2) + … + 1 = n(n-1)/2 <br>
+(phần tử thứ i được so sánh với n-i phần tử còn lại.)<br>
+Số phép hoán vị (tương đương 3 phép gán) lại phụ thuộc vào tình trạng ban đầu của dãy. Cụ thể như sau:<br>
+<em> Trường hợp tốt nhất: Dãy ban đầu đã có thứ tự. Ta thấy ngay ta hông tốn một phép hoán vị nào.<br>
+</em> Trường hợp xấu nhất: Dãy ban đầu có thứ tự ngược. Ta thấy ngay mỗi lần so sánh phần tử thứ i với n-i phần tử còn lại, ta đều phải thực hiện hoán vị. Điều này có nghĩa là số phép hoán vị bằng n(n-1)/2.<br>
+Tổng kết lại, ta có độ phức tạp của Interchange Sort thuộc O(n<sup>2<sup>) trong mọi trường hợp.<br></p></article>
+ 
+</slide>
+
+<slide class="big" >
+  
+    <hgroup>
+      <h2>V.Tham khảo</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul class="build">
+<li>Visualizing Algorithms, David Galles, University of San Francisco.</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Thank You!&gt;</h2>
+    <p>Important contact information goes here.</p>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+<!-- <slide class="logoslide dark nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo_white.png"></span>
+  </article>
+</slide> -->
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
